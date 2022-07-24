@@ -34,7 +34,7 @@ function willYouMarryMe(isPositiveAnswer) {
       reject(new Error('Wrong parameter is passed! Ask her again.'));
     }
 
-    const resultMsg = isPositiveAnswer ? 'Hooray!!! She said "Yes"!' : 'Oh no, she said "No".' ;
+    const resultMsg = isPositiveAnswer ? 'Hooray!!! She said "Yes"!' : 'Oh no, she said "No".';
     resolve(resultMsg);
   });
 }
@@ -105,9 +105,11 @@ async function chainPromises(array, action) {
     item
       .then((data) => result.push(data))
       .catch((error) => new Error(error));
+
+    return undefined;
   });
 
-  return new Promise((resolve) => resolve(result.reduce(action)))
+  return new Promise((resolve) => resolve(result.reduce(action)));
 }
 
 module.exports = {
